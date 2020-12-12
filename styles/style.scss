@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&display=swap");
+
+$barlow: "Barlow Semi Condensed", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(33, 33, 61);
+  padding-top: 20px;
+}
+
+.header {
+  width: 560px;
+  height: 100px;
+  border-radius: 6px;
+  border: 1px solid white;
+  margin: auto;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  padding: 0 20px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgb(255, 255, 255) 50%,
+    rgb(255, 255, 255) 100%
+  );
+
+  p {
+    color: white;
+    font-size: 20px;
+    font-family: $barlow;
+  }
+
+  .game-name {
+    font-size: 22px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .score {
+    margin: 10px;
+    color: rgb(33, 33, 61);
+    font-size: 22px;
+  }
+}
+
+.game-area {
+  position: relative;
+  width: 560px;
+  height: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-family: $barlow;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    position: absolute;
+    top: 25%;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.5s linear;
+  }
+
+  .your-choice {
+    left: 12.5%;
+    transform: translateX(-50%);
+  }
+
+  .choice-of-the-house {
+    right: 70px;
+    transform: translateX(50%);
+  }
+
+  p.show {
+    opacity: 1;
+  }
+
+  p.winning-status {
+    position: static;
+    font-size: 30px;
+    opacity: 1;
+    margin-bottom: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s linear;
+  }
+
+  p.winning-status.show {
+    opacity: 1;
+  }
+
+  button {
+    width: 140px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: white;
+    border: none;
+    font-family: $barlow;
+    font-size: 18px;
+    color: rgb(33, 33, 61);
+    margin-bottom: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s linear;
+    transform: translateY(20%);
+    outline: none;
+  }
+
+  button.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+}
+
+.center {
+  background-color: white;
+  width: 80%;
+  height: 80%;
+  border-radius: inherit;
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  img {
+    pointer-events: none;
+    width: 50%;
+  }
+}
+
+.rock,
+.paper,
+.scissors,
+.house-choice {
+  border: 4px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  position: absolute;
+  top: 37.5%;
+  left: 37.5%;
+  transition: all 1.2s ease-out;
+  box-shadow: 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.house-choice {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(150%);
+  transition: all 0.5s linear;
+}
+
+.house-choice.show {
+  opacity: 1;
+}
+
+.outer-glow {
+  box-shadow: 0 0 20px yellow;
+}
+
+.rock {
+  background-color: red;
+  transform: rotate(30deg) translateX(100%) rotate(-30deg);
+}
+
+.paper {
+  background-color: blue;
+  transform: rotate(150deg) translateX(100%) rotate(-150deg);
+}
+
+.scissors {
+  background-color: rgb(0, 255, 98);
+  transform: rotate(270deg) translateX(100%) rotate(-270deg);
+}
+
+.selected-fw {
+  transform: rotate(540deg) translateX(150%) rotate(-540deg);
+  pointer-events: none;
+}
+
+.selected-bw {
+  transform: rotate(180deg) translateX(150%) rotate(-180deg);
+  pointer-events: none;
+}
+
+.left-fw {
+  transform: rotate(360deg) translateX(150%) rotate(-360deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left-bw {
+  transform: rotate(0deg) translateX(150%) rotate(0deg);
+  opacity: 0;
+  pointer-events: none;
+}
