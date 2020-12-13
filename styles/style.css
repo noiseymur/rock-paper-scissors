@@ -278,6 +278,7 @@
   transition: all 1.2s ease-out;
   -webkit-box-shadow: 3px 0px rgba(0, 0, 0, 0.3);
           box-shadow: 3px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .house-choice {
@@ -302,18 +303,24 @@
   background-color: red;
   -webkit-transform: rotate(30deg) translateX(100%) rotate(-30deg);
           transform: rotate(30deg) translateX(100%) rotate(-30deg);
+  -webkit-animation: rock-game-start 1s ease-out;
+          animation: rock-game-start 1s ease-out;
 }
 
 .paper {
   background-color: blue;
   -webkit-transform: rotate(150deg) translateX(100%) rotate(-150deg);
           transform: rotate(150deg) translateX(100%) rotate(-150deg);
+  -webkit-animation: paper-game-start 1s ease-out;
+          animation: paper-game-start 1s ease-out;
 }
 
 .scissors {
   background-color: #00ff62;
   -webkit-transform: rotate(270deg) translateX(100%) rotate(-270deg);
           transform: rotate(270deg) translateX(100%) rotate(-270deg);
+  -webkit-animation: scissors-game-start 1s ease-out;
+          animation: scissors-game-start 1s ease-out;
 }
 
 .selected-fw {
@@ -448,6 +455,96 @@
   }
   .game-area button {
     margin-bottom: -40px;
+  }
+}
+
+@-webkit-keyframes rock-game-start {
+  0% {
+    -webkit-transform: rotate(30deg) translateX(120%) rotate(-30deg);
+            transform: rotate(30deg) translateX(120%) rotate(-30deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    -webkit-transform: rotate(30deg) translateX(100%) rotate(-30deg);
+            transform: rotate(30deg) translateX(100%) rotate(-30deg);
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@keyframes rock-game-start {
+  0% {
+    -webkit-transform: rotate(30deg) translateX(120%) rotate(-30deg);
+            transform: rotate(30deg) translateX(120%) rotate(-30deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    -webkit-transform: rotate(30deg) translateX(100%) rotate(-30deg);
+            transform: rotate(30deg) translateX(100%) rotate(-30deg);
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@-webkit-keyframes paper-game-start {
+  0% {
+    -webkit-transform: rotate(150deg) translateX(120%) rotate(-150deg);
+            transform: rotate(150deg) translateX(120%) rotate(-150deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    -webkit-transform: rotate(150deg) translateX(100%) rotate(-150deg);
+            transform: rotate(150deg) translateX(100%) rotate(-150deg);
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@keyframes paper-game-start {
+  0% {
+    -webkit-transform: rotate(150deg) translateX(120%) rotate(-150deg);
+            transform: rotate(150deg) translateX(120%) rotate(-150deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    -webkit-transform: rotate(150deg) translateX(100%) rotate(-150deg);
+            transform: rotate(150deg) translateX(100%) rotate(-150deg);
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@-webkit-keyframes scissors-game-start {
+  0% {
+    -webkit-transform: rotate(270deg) translateX(120%) rotate(-270deg);
+            transform: rotate(270deg) translateX(120%) rotate(-270deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    -webkit-transform: rotate(270deg) translateX(100%) rotate(-270deg);
+            transform: rotate(270deg) translateX(100%) rotate(-270deg);
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+
+@keyframes scissors-game-start {
+  0% {
+    -webkit-transform: rotate(270deg) translateX(120%) rotate(-270deg);
+            transform: rotate(270deg) translateX(120%) rotate(-270deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    -webkit-transform: rotate(270deg) translateX(100%) rotate(-270deg);
+            transform: rotate(270deg) translateX(100%) rotate(-270deg);
+    opacity: 1;
+    pointer-events: none;
   }
 }
 /*# sourceMappingURL=style.css.map */
