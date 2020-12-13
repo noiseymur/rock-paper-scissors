@@ -9,24 +9,24 @@ $barlow: "Barlow Semi Condensed", sans-serif;
 }
 
 .container {
+  min-height: 100vh;
   width: 100vw;
-  height: 100vh;
   background-color: rgb(33, 33, 61);
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
   width: 560px;
   height: 100px;
+  position: relative;
   border-radius: 6px;
   border: 1px solid white;
-  margin: auto;
-  margin-bottom: 60px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
   background-image: linear-gradient(
     90deg,
@@ -38,22 +38,79 @@ $barlow: "Barlow Semi Condensed", sans-serif;
 
   p {
     color: white;
-    font-size: 20px;
     font-family: $barlow;
   }
 
   .game-name {
     font-size: 22px;
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
-  .score {
-    margin: 10px;
+  .scores {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+  }
+
+  .scores p {
     color: rgb(33, 33, 61);
     font-size: 22px;
+  }
+
+  .how-to,
+  .clear {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    bottom: 0;
+    transform: translateY(150%);
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 3;
+
+    img {
+      width: 50%;
+      pointer-events: none;
+    }
+  }
+
+  .how-to {
+    left: 8px;
+
+    &:hover {
+      &::after {
+        content: "How to play";
+        font-size: 16px;
+        font-family: $barlow;
+        color: white;
+        width: max-content;
+        position: absolute;
+        right: 0;
+        transform: translateX(calc(100% + 10px));
+      }
+    }
+  }
+
+  .clear {
+    right: 8px;
+
+    &:hover {
+      &::before {
+        content: "Clear scores";
+        font-size: 16px;
+        font-family: $barlow;
+        color: white;
+        width: max-content;
+        position: absolute;
+        left: 0;
+        transform: translateX(calc(-100% - 10px));
+      }
+    }
   }
 }
 
@@ -61,11 +118,12 @@ $barlow: "Barlow Semi Condensed", sans-serif;
   position: relative;
   width: 560px;
   height: 560px;
-  margin: 0 auto;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 
   p {
     font-family: $barlow;
@@ -85,7 +143,7 @@ $barlow: "Barlow Semi Condensed", sans-serif;
   }
 
   .choice-of-the-house {
-    right: 70px;
+    right: 12.5%;
     transform: translateX(50%);
   }
 
@@ -217,4 +275,131 @@ $barlow: "Barlow Semi Condensed", sans-serif;
   transform: rotate(0deg) translateX(150%) rotate(0deg);
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width: 660px) {
+  .header {
+    width: 85vw;
+    height: 15vw;
+    padding: 0 2vw;
+
+    .game-name {
+      font-size: 3.6vw;
+    }
+
+    .scores p {
+      font-size: 3.6vw;
+    }
+  }
+
+  .game-area {
+    position: relative;
+    width: 85vw;
+    height: 85vw;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 40px;
+
+    p {
+      font-size: 22px;
+      position: absolute;
+      top: 25%;
+    }
+
+    .your-choice {
+      top: 20%;
+      transform: translateX(-50%) translateY(-50%);
+      left: 25%;
+    }
+
+    .choice-of-the-house {
+      text-align: center;
+      top: 20%;
+      transform: translateX(50%) translateY(-50%);
+      right: 25%;
+      max-width: 150px;
+    }
+
+    p.winning-status {
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-bottom: -20px;
+    }
+  }
+
+  .house-choice {
+    transform: translateX(100%);
+  }
+
+  .selected-fw {
+    transform: rotate(540deg) translateX(100%) rotate(-540deg);
+  }
+
+  .selected-bw {
+    transform: rotate(180deg) translateX(100%) rotate(-180deg);
+  }
+
+  .left-fw {
+    transform: rotate(360deg) translateX(100%) rotate(-360deg);
+  }
+
+  .left-bw {
+    transform: rotate(0deg) translateX(100%) rotate(0deg);
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    .how-to {
+      &:hover {
+        &::after {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .clear {
+      &:hover {
+        &::before {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .game-area {
+    p.winning-status {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 120px;
+      height: 34px;
+      font-size: 16px;
+      margin-bottom: -20px;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .game-area {
+    p {
+      width: 80px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    p.winning-status {
+      width: auto;
+    }
+
+    button {
+      margin-bottom: -40px;
+    }
+  }
 }

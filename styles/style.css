@@ -7,19 +7,10 @@
 }
 
 .container {
+  min-height: 100vh;
   width: 100vw;
-  height: 100vh;
   background-color: #21213d;
   padding-top: 20px;
-}
-
-.header {
-  width: 560px;
-  height: 100px;
-  border-radius: 6px;
-  border: 1px solid white;
-  margin: auto;
-  margin-bottom: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,13 +18,26 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header {
+  width: 560px;
+  height: 100px;
   position: relative;
+  border-radius: 6px;
+  border: 1px solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0 20px;
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0)), color-stop(50%, white), to(white));
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, white 50%, white 100%);
@@ -41,30 +45,104 @@
 
 .header p {
   color: white;
-  font-size: 20px;
   font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 .header .game-name {
   font-size: 22px;
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
 }
 
-.header .score {
-  margin: 10px;
+.header .scores {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.header .scores p {
   color: #21213d;
   font-size: 22px;
+}
+
+.header .how-to,
+.header .clear {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  bottom: 0;
+  -webkit-transform: translateY(150%);
+          transform: translateY(150%);
+  border-radius: 50%;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.header .how-to img,
+.header .clear img {
+  width: 50%;
+  pointer-events: none;
+}
+
+.header .how-to {
+  left: 8px;
+}
+
+.header .how-to:hover::after {
+  content: "How to play";
+  font-size: 16px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  right: 0;
+  -webkit-transform: translateX(calc(100% + 10px));
+          transform: translateX(calc(100% + 10px));
+}
+
+.header .clear {
+  right: 8px;
+}
+
+.header .clear:hover::before {
+  content: "Clear scores";
+  font-size: 16px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  left: 0;
+  -webkit-transform: translateX(calc(-100% - 10px));
+          transform: translateX(calc(-100% - 10px));
 }
 
 .game-area {
   position: relative;
   width: 560px;
   height: 560px;
-  margin: 0 auto;
+  justify-self: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,6 +156,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 20px;
 }
 
 .game-area p {
@@ -100,7 +179,7 @@
 }
 
 .game-area .choice-of-the-house {
-  right: 70px;
+  right: 12.5%;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
 }
@@ -261,5 +340,114 @@
           transform: rotate(0deg) translateX(150%) rotate(0deg);
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width: 660px) {
+  .header {
+    width: 85vw;
+    height: 15vw;
+    padding: 0 2vw;
+  }
+  .header .game-name {
+    font-size: 3.6vw;
+  }
+  .header .scores p {
+    font-size: 3.6vw;
+  }
+  .game-area {
+    position: relative;
+    width: 85vw;
+    height: 85vw;
+    justify-self: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-top: 40px;
+  }
+  .game-area p {
+    font-size: 22px;
+    position: absolute;
+    top: 25%;
+  }
+  .game-area .your-choice {
+    top: 20%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    left: 25%;
+  }
+  .game-area .choice-of-the-house {
+    text-align: center;
+    top: 20%;
+    -webkit-transform: translateX(50%) translateY(-50%);
+            transform: translateX(50%) translateY(-50%);
+    right: 25%;
+    max-width: 150px;
+  }
+  .game-area p.winning-status {
+    margin-bottom: 20px;
+  }
+  .game-area button {
+    margin-bottom: -20px;
+  }
+  .house-choice {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  .selected-fw {
+    -webkit-transform: rotate(540deg) translateX(100%) rotate(-540deg);
+            transform: rotate(540deg) translateX(100%) rotate(-540deg);
+  }
+  .selected-bw {
+    -webkit-transform: rotate(180deg) translateX(100%) rotate(-180deg);
+            transform: rotate(180deg) translateX(100%) rotate(-180deg);
+  }
+  .left-fw {
+    -webkit-transform: rotate(360deg) translateX(100%) rotate(-360deg);
+            transform: rotate(360deg) translateX(100%) rotate(-360deg);
+  }
+  .left-bw {
+    -webkit-transform: rotate(0deg) translateX(100%) rotate(0deg);
+            transform: rotate(0deg) translateX(100%) rotate(0deg);
+  }
+}
+
+@media (max-width: 450px) {
+  .header .how-to:hover::after {
+    font-size: 14px;
+  }
+  .header .clear:hover::before {
+    font-size: 14px;
+  }
+  .game-area p.winning-status {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .game-area button {
+    width: 120px;
+    height: 34px;
+    font-size: 16px;
+    margin-bottom: -20px;
+  }
+}
+
+@media (max-width: 370px) {
+  .game-area p {
+    width: 80px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .game-area p.winning-status {
+    width: auto;
+  }
+  .game-area button {
+    margin-bottom: -40px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

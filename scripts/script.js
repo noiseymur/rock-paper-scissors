@@ -8,6 +8,7 @@ let winningStatus = document.querySelector('.winning-status');
 let replayBtn = document.querySelector('.replay');
 let timesWon = document.querySelector('.times-won');
 let timesLost = document.querySelector('.times-lost');
+let clearScoreBtn = document.querySelector('.clear');
 
 let userSelected = 'none';
 let houseSelected = 'none';
@@ -15,6 +16,13 @@ let selectedMove;
 
 let wonCount = 0;
 let lostCount = 0;
+
+if(localStorage.getItem('scores')){
+    wonCount = JSON.parse(localStorage.getItem('scores')).won;
+    lostCount = JSON.parse(localStorage.getItem('scores')).lost;
+    timesWon.innerText = wonCount;
+    timesLost.innerText = lostCount;
+}
 
 rock.addEventListener('click',(e)=>{
     userSelected = 'rock';
@@ -121,6 +129,14 @@ function showResults () {
         wonCount += 1;
     }
 
+    let newScores = {
+        won: wonCount,
+        lost: lostCount
+    }
+
+    localStorage.clear();
+    localStorage.setItem('scores',JSON.stringify(newScores));
+
     winningStatus.innerText = result;
 
     setTimeout(() => {
@@ -152,3 +168,11 @@ replayBtn.addEventListener('click',(e)=>{
         scissors.classList = 'scissors';
     }, 500);
 });
+
+clearScoreBtn.addEventListener('click',()=>{
+    wonCount = 0;
+    lostCount = 0;
+    timesLost.innerText = lostCount;
+    timesWon.innerText = wonCount;
+    localStorage.clear();
+})
